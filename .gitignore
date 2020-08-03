@@ -3,3 +3,4 @@ obj
 CloudThingStoreConsoleApp.csproj
 CloudThingStoreServices.csproj
 CloudThingStore.sln
+.vscode
