@@ -5,14 +5,12 @@ namespace CloudThingStoreServices {
     public class ProductCategoryServices {
         private List<ProductCategory> _productCategoriesObject;
         private List<String> _productCategoryName;
-        private int _count;
         public ProductCategoryServices(){
             _productCategoriesObject = new List<ProductCategory> ();
-            _count = 0;
         }
         public void Add (string categoryName) {
             _productCategoriesObject.Add (new ProductCategory {
-                id = ++_count,
+                id = _productCategoriesObject.Count + 1 , 
                     name = categoryName
             });
         }
