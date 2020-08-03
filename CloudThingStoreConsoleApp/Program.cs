@@ -8,9 +8,9 @@ namespace CloudThingStoreConsoleApp
     {
         static void Main(string[] args)
         {
-            
+
             List<String> productCategoryNames;
-            var catgoryListServicesObject =  new ProductCategoryServices(); 
+            ProductCategoryServices catgoryListServicesObject =  new ProductCategoryServices(); 
             catgoryListServicesObject.Add("Rahul");
             catgoryListServicesObject.Add("Vikram");
             catgoryListServicesObject.Add("Vinod");
@@ -20,7 +20,9 @@ namespace CloudThingStoreConsoleApp
             catgoryListServicesObject.Add("Vishnu");
             
             productCategoryNames = catgoryListServicesObject.Get();
-            
+
+            Console.WriteLine(catgoryListServicesObject.Get(3));
+
             productCategoryNames.ForEach(
                 element => Console.WriteLine(element));            
         }
