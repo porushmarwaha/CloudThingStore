@@ -1,6 +1,9 @@
-bin 
-obj
+CloudThingStoreConsoleApp/bin 
+CloudThingStoreConsoleApp/obj
 CloudThingStoreConsoleApp.csproj
+CloudThingStoreServices/bin 
+CloudThingStoreServices/obj
+
 CloudThingStoreServices.csproj
 CloudThingStore.sln
 .vscode
