@@ -1,0 +1,86 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "CloudThingStoreServices/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "compile": {
+          "bin/placeholder/CloudThingStoreServices.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CloudThingStoreServices.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CloudThingStoreServices/1.0.0": {
+      "type": "project",
+      "path": "../CloudThingStoreServices/CloudThingStoreServices.csproj",
+      "msbuildProject": "../CloudThingStoreServices/CloudThingStoreServices.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETCoreApp,Version=v3.1": [
+      "CloudThingStoreServices >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/home/porushmarwaha/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/home/porushmarwaha/Downloads/CloudThingStore/CloudThingStoreConsoleApp/CloudThingStoreConsoleApp.csproj",
+      "projectName": "CloudThingStoreConsoleApp",
+      "projectPath": "/home/porushmarwaha/Downloads/CloudThingStore/CloudThingStoreConsoleApp/CloudThingStoreConsoleApp.csproj",
+      "packagesPath": "/home/porushmarwaha/.nuget/packages/",
+      "outputPath": "/home/porushmarwaha/Downloads/CloudThingStore/CloudThingStoreConsoleApp/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/home/porushmarwaha/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "netcoreapp3.1"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "projectReferences": {
+            "/home/porushmarwaha/Downloads/CloudThingStore/CloudThingStoreServices/CloudThingStoreServices.csproj": {
+              "projectPath": "/home/porushmarwaha/Downloads/CloudThingStore/CloudThingStoreServices/CloudThingStoreServices.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "netcoreapp3.1": {
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.1.302/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
