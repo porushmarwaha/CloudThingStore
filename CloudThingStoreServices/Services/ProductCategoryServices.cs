@@ -18,18 +18,18 @@ namespace CloudThingStoreServices {
         public List<ProductCategory> Get () {
             return _productCategories;
         }
-        public string Get(int id){
-            return _productCategories.Exists(element => 
-                element.id == id) ? (_productCategories.Find(element => 
-                    element.id == id)).name : "No Category ID Found";   
+        public string Get (int id) {
+            return _productCategories.Exists (element =>
+                element.id == id) ? (_productCategories.Find (element =>
+                element.id == id)).name : "No Category ID Found";
         }
-        public string Update(int id , string name){
-            if(_productCategories.Exists(element => element.id == id)){
-                (_productCategories.Find(element => 
+        public string Update (int id, string name) {
+            if (_productCategories.Exists (element => element.id == id)) {
+                (_productCategories.Find (element =>
                     element.id == id)).name = name;
-                    return "Successfully Updated";
+                return "Successfully Updated";
             }
             return "ID not existed";
-        } 
+        }
     }
 }

@@ -27,9 +27,9 @@ namespace CloudThingStoreConsoleApp {
                     case 2:
                         Console.WriteLine ("\nList of Category");
                         productCategory = catgoryListService.Get ();
-                        if(productCategory.Count == 0){
-                             Console.WriteLine("List is Empty");
-                             break;
+                        if (productCategory.Count == 0) {
+                            Console.WriteLine ("List is Empty");
+                            break;
                         }
                         productCategory.ForEach (element =>
                             Console.WriteLine ($"Id - {element.id}  Name - {element.name}"));
@@ -47,7 +47,7 @@ namespace CloudThingStoreConsoleApp {
                         Console.WriteLine ($"Name - {name}");
                         break;
                     case 5:
-                        System.Environment.Exit(0);
+                        System.Environment.Exit (0);
                         break;
                     default:
                         Console.WriteLine ("Input not match from given List");
