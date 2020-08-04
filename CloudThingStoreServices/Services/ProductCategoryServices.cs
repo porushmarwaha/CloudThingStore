@@ -19,10 +19,17 @@ namespace CloudThingStoreServices {
             return _productCategories;
         }
         public string Get(int id){
-            return _productCategories[id -1].name;  
+            return _productCategories.Exists(element => 
+                element.id == id) ? (_productCategories.Find(element => 
+                    element.id == id)).name : "No Category ID Found";   
         }
-        public void Update(int id , string name){
-            _productCategories[id - 1].name = name;
+        public string Update(int id , string name){
+            if(_productCategories.Exists(element => element.id == id)){
+                (_productCategories.Find(element => 
+                    element.id == id)).name = name;
+                    return "Successfully Updated";
+            }
+            return "ID not existed";
         } 
     }
 }
