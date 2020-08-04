@@ -2,29 +2,26 @@
 using System.Collections.Generic;
 using CloudThingStoreServices;
 
-namespace CloudThingStoreConsoleApp
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
+namespace CloudThingStoreConsoleApp {
+    class Program {
+        static void Main (string[] args) {
+            var catgoryListService = new ProductCategoryServices ();
+            var productCategory = new List<ProductCategory> ();
+            string counter;
+            while (true) {
+                Console.Write ($"PLease enter the Category  - ");
+                catgoryListService.Add (Console.ReadLine ());
+                Console.Write ("Do you Still want to Add Category yes or no ");
+                counter = Console.ReadLine ();
+                if (counter == "yes" || counter == "y" || counter == "Yes" || counter == "Y")
+                    continue;
+                break;
+            }
+            Console.WriteLine ();
+            productCategory = catgoryListService.Get ();
+            productCategory.ForEach (element =>
+                Console.WriteLine ($"Id - {element.id}  Name - {element.name}"));
 
-            List<String> productCategoryNames;
-            var catgoryListServicesObject =  new ProductCategoryServices(); 
-            catgoryListServicesObject.Add("Rahul");
-            catgoryListServicesObject.Add("Vikram");
-            catgoryListServicesObject.Add("Vinod");
-            catgoryListServicesObject.Add("Vishal");
-            catgoryListServicesObject.Add("Vishesh");
-            catgoryListServicesObject.Add("Vikral");
-            catgoryListServicesObject.Add("Vishnu");
-            
-            productCategoryNames = catgoryListServicesObject.Get();
-
-            Console.WriteLine(catgoryListServicesObject.Get(3));
-
-            productCategoryNames.ForEach(
-                element => Console.WriteLine(element));            
         }
     }
 }

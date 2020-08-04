@@ -2,7 +2,7 @@ namespace CloudThingStoreServices
 {
     public class ProductCategory
     {
-        internal int id {get; set;}
-        internal string name{get; set;}
+        public int id {get; set;}
+        public string name{get; set;}
     }
 }
