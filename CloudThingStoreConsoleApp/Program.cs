@@ -50,7 +50,7 @@ namespace CloudThingStoreConsoleApp {
                         System.Environment.Exit (0);
                         break;
                     default:
-                        Console.WriteLine ("Input not match from given List");
+                        Console.WriteLine ("Input not match from given List Options");
                         break;
                 }
             }
