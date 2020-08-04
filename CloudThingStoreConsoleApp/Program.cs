@@ -7,7 +7,7 @@ namespace CloudThingStoreConsoleApp {
         static void Main (string[] args) {
             var catgoryListService = new ProductCategoryServices ();
             var productCategory = new List<ProductCategory> ();
-            string counter;
+            string counter = "";
             while (true) {
                 Console.Write ($"PLease enter the Category  - ");
                 catgoryListService.Add (Console.ReadLine ());
