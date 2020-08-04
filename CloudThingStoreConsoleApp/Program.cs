@@ -10,7 +10,7 @@ namespace CloudThingStoreConsoleApp
         {
 
             List<String> productCategoryNames;
-            ProductCategoryServices catgoryListServicesObject =  new ProductCategoryServices(); 
+            var catgoryListServicesObject =  new ProductCategoryServices(); 
             catgoryListServicesObject.Add("Rahul");
             catgoryListServicesObject.Add("Vikram");
             catgoryListServicesObject.Add("Vinod");
