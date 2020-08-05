@@ -1,19 +1,18 @@
-using System;
 using System.Collections.Generic;
 namespace CloudThingStoreServices {
     public class ProductCategoryServices {
         private List<ProductCategory> _productCategories = new List<ProductCategory> ();
         private int count = 0;
-        public void Add (string categoryName) {
-            if (!_productCategories.Exists (element => element.name == categoryName))
+        public ProductCategory Add (string categoryName) {
+            if (!_productCategories.Exists (element => element.name == categoryName)){
                 _productCategories.Add (new ProductCategory { id = ++count, name = categoryName });
+                return _FindObjectByName(categoryName);
+            }
             else throw new System.Exception ("category Name Already Existed");
         }
         public ProductCategory Update (int id, string name) {
-            if (_productCategories.Exists (element => element.id == id)) {
                 _FindObjectById (id).name = name;
                 return _FindObjectById (id);
-            } else throw new Exception ("ID not Exist");
         }
         public List<ProductCategory> Get () {
             return _productCategories;
