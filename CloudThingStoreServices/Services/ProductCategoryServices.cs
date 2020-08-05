@@ -8,12 +8,12 @@ namespace CloudThingStoreServices {
         private int count;
         public ProductCategoryServices () {
             _productCategories = new List<ProductCategory> ();
-            // _category = new ProductCategory();
+            //  _category = new ProductCategory();
             count = 0;
         }
         // Return Empty Object
         public ProductCategory Add (string categoryName) {
-            if (_CheckExistedObjectByName (categoryName)) {
+            if (!_CheckExistedObjectByName (categoryName)) {
                 _productCategories.Add (new ProductCategory {
                     id = ++count,
                         name = categoryName
@@ -30,30 +30,30 @@ namespace CloudThingStoreServices {
         public ProductCategory Get (int id) {
             if (_CheckExistedObjectById (id))
                 return _FindObjectById (id);
-            else throw new ArgumentException ("Name not Found");
+            else throw new ArgumentException ();
         }
         public ProductCategory Get (string name) {
             if (_CheckExistedObjectByName (name)) return _FindObjectByName (name);
-            else throw new ArgumentException ("Name not Found");
+            else throw new ArgumentException ();
         }
         public ProductCategory Update (int id, string name) {
             if (_CheckExistedObjectById (id)) {
                 _FindObjectById (id).name = name;
                 return _FindObjectById (id);
-            } else throw new ArgumentException ("Id not Found");
+            } else throw new ArgumentException ();
         }
         public bool Delete (int id) {
             if (_CheckExistedObjectById (id)) {
                 _productCategories.Remove (_FindObjectById (id));
                 return true;
-            } else throw new ArgumentException ("Id not Found");
+            } else throw new ArgumentException ();
 
         }
         public bool Delete (string name) {
             if (_CheckExistedObjectByName (name)) {
                 _productCategories.Remove (_FindObjectByName (name));
                 return true;
-            } else throw new ArgumentException ("Name not Found");
+            } else throw new ArgumentException ();
         }
 
         private ProductCategory _FindObjectById (int id) {
