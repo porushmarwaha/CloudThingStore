@@ -7,7 +7,7 @@ namespace CloudThingStoreConsoleApp {
         static void Main (string[] args) {
             var catgoryListService = new ProductCategoryServices ();
             var productCategory = new List<ProductCategory> ();
-            var category = new ProductCategory();
+            ProductCategory category;
             int input = 0;
             int id = 0;
             string name = "";
@@ -24,7 +24,11 @@ namespace CloudThingStoreConsoleApp {
                     case 1:
                         // Add Method
                         Console.Write ($"\nPlease enter Category - ");
-                        catgoryListService.Add (Console.ReadLine ());
+                        category = catgoryListService.Add (Console.ReadLine ());
+                        if(category == null)
+                            Console.WriteLine("Name Already Existed");
+                        else  
+                            Console.WriteLine("Succesfully Added");
                         break;
                     case 2:
                         // Print Method

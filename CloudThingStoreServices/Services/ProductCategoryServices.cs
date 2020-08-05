@@ -4,30 +4,33 @@ using System.Collections.Generic;
 namespace CloudThingStoreServices {
     public class ProductCategoryServices {
         private List<ProductCategory> _productCategories;
+        private ProductCategory _category;
         private int count;
         public ProductCategoryServices () {
             _productCategories = new List<ProductCategory> ();
+            // _category = new ProductCategory();
             count = 0;
         }
-        public void Add (string categoryName) {
-            if (_CheckExistedObjectByName (categoryName))
+        // Return Empty Object
+        public ProductCategory Add (string categoryName) {
+            if (_CheckExistedObjectByName (categoryName)) {
                 _productCategories.Add (new ProductCategory {
                     id = ++count,
                         name = categoryName
                 });
-            else throw new ArgumentException ("Element Already exists in list");
+                return _FindObjectByName (categoryName);
+            }
+            return _category;
 
         }
         public List<ProductCategory> Get () {
             return _productCategories;
         }
+        // throw method
         public ProductCategory Get (int id) {
-            // if (_CheckExistedObjectById (id))
-            try {
+            if (_CheckExistedObjectById (id))
                 return _FindObjectById (id);
-            } catch (ArgumentException) {
-                throw new ArgumentException ("Id not Found");
-            }
+            else throw new ArgumentException ("Name not Found");
         }
         public ProductCategory Get (string name) {
             if (_CheckExistedObjectByName (name)) return _FindObjectByName (name);
