@@ -7,6 +7,7 @@ namespace CloudThingStoreConsoleApp {
         static void Main (string[] args) {
             var catgoryListService = new ProductCategoryServices ();
             var productCategory = new List<ProductCategory> ();
+            var category = new ProductCategory();
             int input = 0;
             int id = 0;
             string name = "";
@@ -21,10 +22,12 @@ namespace CloudThingStoreConsoleApp {
                 }
                 switch (input) {
                     case 1:
+                        // Add Method
                         Console.Write ($"\nPlease enter Category - ");
                         catgoryListService.Add (Console.ReadLine ());
                         break;
                     case 2:
+                        // Print Method
                         Console.WriteLine ("\nList of Category");
                         productCategory = catgoryListService.Get ();
                         if (productCategory.Count == 0) {
@@ -35,20 +38,28 @@ namespace CloudThingStoreConsoleApp {
                             Console.WriteLine ($"Id - {element.id}  Name - {element.name}"));
                         break;
                     case 3:
+                        // Update Method
                         Console.Write ("\nPlease enter Id - ");
                         id = int.Parse (Console.ReadLine ());
                         Console.Write ("Please enter new category Name - ");
                         name = Console.ReadLine ();
-                        Console.WriteLine (catgoryListService.Update (id, name));
+                        Console.WriteLine ($"ID - {catgoryListService.Update (id, name).id} is Successfully Updated" );
                         break;
                     case 4:
-                        Console.Write ("\nPlease enter Id - ");
-                        name = catgoryListService.Get (int.Parse (Console.ReadLine ()));
-                        Console.WriteLine ($"Name - {name}");
+                        // Search Method
+                        Console.Write ("\nPlease enter Id or Name- ");
+                        category = catgoryListService.Get (int.Parse (Console.ReadLine ()));
+                        Console.WriteLine ($"Id- {category.name} Name - {category.name}");
                         break;
                     case 5:
-                        System.Environment.Exit (0);
+                        Console.Write ("\nPlease enter Id or Name- ");
+                        if(catgoryListService.Delete (int.Parse (Console.ReadLine ())))
+                            Console.WriteLine ($"Deleted Successfully");
                         break;
+                    case 6:
+                        // Exit Method
+                        System.Environment.Exit (0);
+                    break;
                     default:
                         Console.WriteLine ("Input not match from given List Options");
                         break;
