@@ -22,8 +22,12 @@ namespace CloudThingStoreServices {
             return _productCategories;
         }
         public ProductCategory Get (int id) {
-            if (_CheckExistedObjectById (id)) return _FindObjectById (id);
-            else throw new ArgumentException ("Id not Found");
+            // if (_CheckExistedObjectById (id))
+            try {
+                return _FindObjectById (id);
+            } catch (ArgumentException) {
+                throw new ArgumentException ("Id not Found");
+            }
         }
         public ProductCategory Get (string name) {
             if (_CheckExistedObjectByName (name)) return _FindObjectByName (name);
@@ -39,16 +43,14 @@ namespace CloudThingStoreServices {
             if (_CheckExistedObjectById (id)) {
                 _productCategories.Remove (_FindObjectById (id));
                 return true;
-            }
-            else throw new ArgumentException ("Id not Found");
-            
+            } else throw new ArgumentException ("Id not Found");
+
         }
         public bool Delete (string name) {
             if (_CheckExistedObjectByName (name)) {
                 _productCategories.Remove (_FindObjectByName (name));
                 return true;
-            }
-            else throw new ArgumentException ("Name not Found");
+            } else throw new ArgumentException ("Name not Found");
         }
 
         private ProductCategory _FindObjectById (int id) {

@@ -12,7 +12,7 @@ namespace CloudThingStoreConsoleApp {
             int id = 0;
             string name = "";
             while (true) {
-                Console.WriteLine ("\n1. Add a Category \n2. Print List of All Category \n3. Update Category by Id \n4. Search Category by Id \n5. Exit");
+                Console.WriteLine ("\n1. Add a Category \n2. Print List of All Category \n3. Update Category by Id \n4. Search Category by Id or Name \n5. Delete Category by Id or Name\n6. Exit");
                 Console.Write ("Please Choose your Option - ");
                 try {
                     input = int.Parse (Console.ReadLine ());
@@ -52,6 +52,7 @@ namespace CloudThingStoreConsoleApp {
                         Console.WriteLine ($"Id- {category.name} Name - {category.name}");
                         break;
                     case 5:
+                        //Delete Method
                         Console.Write ("\nPlease enter Id or Name- ");
                         if(catgoryListService.Delete (int.Parse (Console.ReadLine ())))
                             Console.WriteLine ($"Deleted Successfully");
