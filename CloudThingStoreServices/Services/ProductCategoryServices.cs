@@ -27,7 +27,7 @@ namespace CloudThingStoreServices {
         }
         public ProductCategory Get (string name) {
             if (_CheckExistedObjectByName (name)) return _FindObjectByName (name);
-            else throw new ArgumentException ("Id not Found");
+            else throw new ArgumentException ("Name not Found");
         }
         public ProductCategory Update (int id, string name) {
             if (_CheckExistedObjectById (id)) {
@@ -48,7 +48,7 @@ namespace CloudThingStoreServices {
                 _productCategories.Remove (_FindObjectByName (name));
                 return true;
             }
-            else throw new ArgumentException ("Id not Found");
+            else throw new ArgumentException ("Name not Found");
         }
 
         private ProductCategory _FindObjectById (int id) {
