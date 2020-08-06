@@ -2,38 +2,28 @@ using System.Collections.Generic;
 namespace CloudThingStoreServices {
     public class ProductCategoryServices {
         private List<ProductCategory> _productCategories = new List<ProductCategory> ();
+        private ProductCategory _category;
         private int count = 0;
-        public ProductCategory Add (string categoryName) {
-            if (!_productCategories.Exists (element => element.name == categoryName)){
-                _productCategories.Add (new ProductCategory { id = ++count, name = categoryName });
-                return _FindObjectByName(categoryName);
-            }
-            else throw new System.Exception ("category Name Already Existed");
+        public ProductCategory Add (string name) {
+            if (!_productCategories.Exists (element => element.name == name.ToLower ())) {
+                _category = new ProductCategory { id = ++count, name = name.ToLower () };
+                _productCategories.Add (_category);
+                return _category;
+            } else throw new CategoryNameAlreadyExistedException (name);
         }
         public ProductCategory Update (int id, string name) {
-                _FindObjectById (id).name = name;
-                return _FindObjectById (id);
+            if (_productCategories.Exists (element => element.id == id))
+                throw new CategoryIdNotExistedException (id);
+            if (_productCategories.Exists (element => element.name == name.ToLower ()))
+                throw new CategoryNameAlreadyExistedException (name);
+            _category = _FindObjectById (id);
+            _category.name = name.ToLower ();
+            return _category;
         }
-        public List<ProductCategory> Get () {
-            return _productCategories;
-        }
-        public ProductCategory Get (int id) {
-            return _FindObjectById (id);
-        }
-        public ProductCategory Get (string name) {
-            return _FindObjectByName (name);
-        }
-        public bool Delete (int id) {
-            return _productCategories.Remove (_FindObjectById (id));
-        }
-        public bool Delete (string name) {
-            return _productCategories.Remove (_FindObjectByName (name));
-        }
-        private ProductCategory _FindObjectById (int id) {
-            return _productCategories.Find (element => element.id == id);
-        }
-        private ProductCategory _FindObjectByName (string name) {
-            return _productCategories.Find (element => element.name == name);
-        }
+        public List<ProductCategory> Get () => _productCategories;
+        public ProductCategory Get (int id) => _FindObjectById (id);
+        public ProductCategory Get (string name) => _productCategories.Find (element => element.name == name.ToLower ());
+        public bool Delete (int id) => _productCategories.Remove (_FindObjectById (id));
+        private ProductCategory _FindObjectById (int id) => _productCategories.Find (element => element.id == id);
     }
 }
