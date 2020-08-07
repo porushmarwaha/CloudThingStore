@@ -12,7 +12,7 @@ namespace CloudThingStoreConsoleApp {
             Console.Write ($"\nPlease enter Category - ");
             try {
                 catgoryListService.Add (Console.ReadLine ());
-            } catch (CategoryNameAlreadyExistedException e) {
+            } catch (DuplicateCategoryException e) {
                 System.Console.WriteLine (e.Message);
             }
         }
@@ -37,9 +37,9 @@ namespace CloudThingStoreConsoleApp {
             }
             try {
                 catgoryListService.Update (id, name);
-            } catch (CategoryIdNotExistedException e) {
+            } catch (CategoryNotExistException e) {
                 Console.WriteLine (e.Message);
-            } catch (CategoryNameAlreadyExistedException e) {
+            } catch (DuplicateCategoryException e) {
                 System.Console.WriteLine (e.Message);
             }
         }

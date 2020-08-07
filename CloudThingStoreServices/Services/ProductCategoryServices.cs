@@ -7,7 +7,7 @@ namespace CloudThingStoreServices {
         private int count = 0;
         public ProductCategory Add (string name) {
             if (_productCategories.Exists (element => element.name == name.ToLower ())) 
-                throw new CategoryNameAlreadyExistedException (name);
+                throw new DuplicateCategoryException (name);
 
                 _category = new ProductCategory { id = ++count, name = name.ToLower () };
                 _productCategories.Add (_category);
@@ -15,10 +15,10 @@ namespace CloudThingStoreServices {
         }
         public ProductCategory Update (int id, string name) {
             if (!_productCategories.Exists (element => element.id == id))
-                throw new CategoryIdNotExistedException (id);
+                throw new CategoryNotExistException (id);
 
             if (_productCategories.Exists (element => element.name == name.ToLower ()))
-                throw new CategoryNameAlreadyExistedException (name);
+                throw new DuplicateCategoryException (name);
                 
             _category = _FindObjectById (id);
             _category.name = name.ToLower ();
