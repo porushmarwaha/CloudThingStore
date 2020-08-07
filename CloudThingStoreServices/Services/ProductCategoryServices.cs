@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 namespace CloudThingStoreServices {
     public class ProductCategoryServices {
         private List<ProductCategory> _productCategories = new List<ProductCategory> ();
@@ -13,7 +14,7 @@ namespace CloudThingStoreServices {
                 return _category;
         }
         public ProductCategory Update (int id, string name) {
-            if (_productCategories.Exists (element => element.id == id))
+            if (!_productCategories.Exists (element => element.id == id))
                 throw new CategoryIdNotExistedException (id);
 
             if (_productCategories.Exists (element => element.name == name.ToLower ()))
@@ -25,8 +26,8 @@ namespace CloudThingStoreServices {
         }
         public List<ProductCategory> Get () => _productCategories;
         public ProductCategory Get (int id) => _FindObjectById (id);
-        public ProductCategory Get (string name) => _productCategories.Find (element => element.name == name.ToLower ());
+        public ProductCategory Get (string name) => _productCategories.FirstOrDefault (element => element.name == name.ToLower ());
         public bool Delete (int id) => _productCategories.Remove (_FindObjectById (id));
-        private ProductCategory _FindObjectById (int id) => _productCategories.Find (element => element.id == id);
+        private ProductCategory _FindObjectById (int id) => _productCategories.FirstOrDefault (element => element.id == id);
     }
 }

@@ -28,9 +28,13 @@ namespace CloudThingStoreConsoleApp {
         }
         internal void Update () {
             Console.Write ("\nPlease enter Id - ");
-            id = int.Parse (Console.ReadLine ());
-            Console.Write ("Please enter new category Name - ");
-            name = Console.ReadLine ();
+            try {
+                id = int.Parse (Console.ReadLine ());
+                Console.Write ("Please enter new category Name - ");
+                name = Console.ReadLine ();
+            } catch (FormatException e) {
+                Console.WriteLine (e.Message);
+            }
             try {
                 catgoryListService.Update (id, name);
             } catch (CategoryIdNotExistedException e) {
@@ -41,7 +45,7 @@ namespace CloudThingStoreConsoleApp {
         }
         internal void Search () {
             Console.Write ("\nPlease enter Id or Name- ");
-            name = Console.ReadLine ();
+            name = Console.ReadLine();
             try {
                 category = catgoryListService.Get (int.Parse (name));
             } catch {
@@ -52,9 +56,13 @@ namespace CloudThingStoreConsoleApp {
         }
         internal void Delete () {
             Console.Write ("\nPlease enter Id - ");
-            if (catgoryListService.Delete (int.Parse (Console.ReadLine ())))
-                Console.WriteLine ($"Deleted Successfully");
-            else Console.WriteLine ($"Id not existed");
+            try {
+                if (catgoryListService.Delete (int.Parse (Console.ReadLine ())))
+                    Console.WriteLine ($"Deleted Successfully");
+                else Console.WriteLine ($"Id not existed");
+            } catch (FormatException ex) {
+                Console.WriteLine (ex.Message);
+            }
         }
     }
 }
