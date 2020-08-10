@@ -4,12 +4,12 @@ namespace CloudThingStoreServices {
     public class ProductCategoryServices {
         private List<ProductCategory> _productCategories = new List<ProductCategory> ();
         private ProductCategory _category;
-        private int count = 0;
+        private int _count = 0;
         public ProductCategory Add (string name) {
             if (_productCategories.Exists (element => element.name == name.ToLower ())) 
                 throw new DuplicateCategoryException (name);
 
-                _category = new ProductCategory { id = ++count, name = name.ToLower () };
+                _category = new ProductCategory { id = ++_count, name = name.ToLower () };
                 _productCategories.Add (_category);
                 return _category;
         }

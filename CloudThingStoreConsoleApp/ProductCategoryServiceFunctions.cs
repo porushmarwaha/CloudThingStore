@@ -5,6 +5,7 @@ namespace CloudThingStoreConsoleApp {
     public class ProductCategoryServiceFunctions {
         ProductCategoryServices catgoryListService = new ProductCategoryServices ();
         List<ProductCategory> productCategory = new List<ProductCategory> ();
+        SubCategoryService subCategoryListService = new SubCategoryService();
         ProductCategory category;
         int id = 0;
         string name = "";
@@ -24,7 +25,7 @@ namespace CloudThingStoreConsoleApp {
                 return;
             }
             productCategory.ForEach (element =>
-                Console.WriteLine ($"Id - {element.id}  Name - {element.name}"));
+                Console.WriteLine ($"Id - {element.id}  Name - {element.name}")); 
         }
         internal void Update () {
             Console.Write ("\nPlease enter Id - ");
@@ -63,6 +64,18 @@ namespace CloudThingStoreConsoleApp {
             } catch (FormatException ex) {
                 Console.WriteLine (ex.Message);
             }
+        }
+        internal void AddSubCategory (){
+            Console.Write("\nPlease enter Category Id -");
+            try{
+                id = int.Parse(Console.ReadLine());
+                Console.Write("\nPlease type Sub category Name - ");
+                name = Console.ReadLine();
+            }catch(FormatException e){
+                Console.WriteLine(e.Message);
+            }
+            subCategoryListService.Add(id,name);
+
         }
     }
 }

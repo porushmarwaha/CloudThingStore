@@ -30,6 +30,9 @@ namespace CloudThingStoreConsoleApp {
                         function.Delete ();
                         break;
                     case 6:
+                        function.AddSubCategory ();
+                        break;
+                    case 7:
                         Environment.Exit (0);
                         break;
                     default:
